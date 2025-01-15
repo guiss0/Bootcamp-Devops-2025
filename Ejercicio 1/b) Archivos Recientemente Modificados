@@ -1,5 +1,0 @@
-ls -lt | head -n 6 |awk {'print $8,$9'}
-
-- ls -lt : Lista todos los directorios en una lista ordenados por fecha de modificacion
-- head -n 6 : Solo muestra los 6 primeros 
-- awk {'print $8, $9'} : Muestra solo las columnas 8 y 9 
