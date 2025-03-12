@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: perros-gatos-deployment-texto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: perros-gatos-app-texto
+  template:
+    metadata:
+      labels:
+        app: perros-gatos-app-texto
+    spec:
+      containers:
+        - name: perros-gatos-container-texto
+          image: perros-gatos-app-texto:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: perros-gatos-service-texto
+spec:
+  selector:
+    app: perros-gatos-app-texto
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007
+  type: NodePort
