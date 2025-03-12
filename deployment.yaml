@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 80
       imagePullSecrets:
-        - name: docker-registry-secret
+        - name: ${{ secrets.DOCKER_REGISTRY_SECRET }}
 ---
 apiVersion: v1
 kind: Service
