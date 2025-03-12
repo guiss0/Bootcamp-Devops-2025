@@ -22,6 +22,15 @@ jobs:
           docker build -t $REGISTRY/$IMAGE_NAME:latest .
           docker push $REGISTRY/$IMAGE_NAME:latest
 
+          
+      - name: Crear Docker Registry Secret en Kubernetes
+        run: |
+         kubectl create secret docker-registry docker-registry-secret \
+          --docker-server=https://index.docker.io/v1/ \
+          --docker-username=${{ secrets.DOCKER_USERNAME }} \
+          --docker-password=${{ secrets.DOCKER_PASSWORD }} \
+          --docker-email=${{ secrets.DOCKER_EMAIL }}
+
       - name: Setup kubectl and deploy
         run: |
           echo "$KUBE_CONFIG_DATA" | base64 -d > kubeconfig
