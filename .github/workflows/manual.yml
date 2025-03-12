@@ -6,7 +6,7 @@ on:
 
 env:
   IMAGE_NAME: html-app
-  REGISTRY: your-dockerhub-user
+  REGISTRY: ${{ secrets.DOCKER_USERNAME }}
 
 jobs:
   build-push-deploy:
