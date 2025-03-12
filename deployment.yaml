@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: perros-gatos-container-texto
-          image: $REGISTRY/$IMAGE_NAME:latest  # Imagen de Docker Hub
+          image: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest  # Imagen de Docker Hub desde los secretos de GitHub Actions
           ports:
             - containerPort: 80
       imagePullSecrets:
