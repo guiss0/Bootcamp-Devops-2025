@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: perros-gatos-container-texto
-          image: guiss0/html-app:latest  # Imagen de Docker Hub
+          image: $REGISTRY/$IMAGE_NAME:latest  # Imagen de Docker Hub
           ports:
             - containerPort: 80
       imagePullSecrets:
