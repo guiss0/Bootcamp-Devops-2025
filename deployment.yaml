@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: perros-gatos-app-texto
+      app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
   template:
     metadata:
       labels:
-        app: perros-gatos-app-texto
+        app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
     spec:
       containers:
         - name: perros-gatos-container-texto
@@ -18,15 +18,15 @@ spec:
           ports:
             - containerPort: 80
       imagePullSecrets:
-        - name: ${{ secrets.DOCKER_REGISTRY_SECRET }}
+        - name: docker-registry-secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: perros-gatos-service-texto
+  name: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
 spec:
   selector:
-    app: perros-gatos-app-texto
+    app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
   ports:
     - protocol: TCP
       port: 80
