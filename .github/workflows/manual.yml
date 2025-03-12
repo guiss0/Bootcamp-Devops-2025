@@ -30,6 +30,5 @@ jobs:
           
       - name: Deploy to Kubernetes
         run: |
-          kubectl delete -f deployment.yaml
           kubectl apply -f deployment.yaml
 
