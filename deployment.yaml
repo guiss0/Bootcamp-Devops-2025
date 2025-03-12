@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: perros-gatos-deployment-texto
+  name: html-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+      app: guiss0/html-app
   template:
     metadata:
       labels:
-        app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+        app: guiss0/html-app
     spec:
       containers:
-        - name: perros-gatos-container-texto
-          image: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest  # Imagen de Docker Hub desde los secretos de GitHub Actions
+        - name: html-app
+          image: guiss0/html-app:latest  # Imagen de Docker Hub desde los secretos de GitHub Actions
           ports:
             - containerPort: 80
       imagePullSecrets:
@@ -23,10 +23,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+  name: html-app
 spec:
   selector:
-    app: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}
+    app: guiss0/html-app
   ports:
     - protocol: TCP
       port: 80
