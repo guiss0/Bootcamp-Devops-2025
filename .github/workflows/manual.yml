@@ -30,6 +30,6 @@ jobs:
           
       - name: Deploy to Kubernetes
         run: |
-          cat deployment.yaml
-          kubectl apply -f deployment.yaml
+         deploy-html-app.yaml
+          kubectl apply -f deploy-html-app.yaml
 
