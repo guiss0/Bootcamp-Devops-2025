@@ -22,8 +22,8 @@ jobs:
               
       - name: Build and Push Docker Image
         run: |
-          docker build -t $REGISTRY/$IMAGE_NAME:latest .
-          docker push $REGISTRY/$IMAGE_NAME:latest
+          docker build -t $REGISTRY/$IMAGE_NAME:$GITHUB_RUN_NUMBER .
+          docker push $REGISTRY/$IMAGE_NAME:$GITHUB_RUN_NUMBER
           
       - name: Setup kubectl and deploy
         run: |
@@ -35,6 +35,7 @@ jobs:
         run: |
           echo "${{ secrets.GOKU }}"  | base64 -d > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
+          set -i "s/imageversion/$GITHUB_RUN_NUMBER/g" deploy-html-app.yaml 
           cat deploy-html-app.yaml
           kubectl apply -f deploy-html-app.yaml
 
