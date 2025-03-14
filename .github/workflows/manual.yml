@@ -30,6 +30,8 @@ jobs:
           
       - name: Deploy to Kubernetes
         run: |
+          echo "$KUBE_CONFIG_DATA" | base64 -d > kubeconfig
+          export KUBECONFIG=$PWD/kubeconfig
           cat deploy-html-app.yaml
           kubectl apply -f deploy-html-app.yaml
 
