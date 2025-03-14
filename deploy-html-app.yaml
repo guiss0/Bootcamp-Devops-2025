@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: html-app
-          image: guiss0/html-app:latest  # Imagen de Docker Hub desde los secretos de GitHub Actions
+          image: guiss0/html-app:imageversion  # Imagen de Docker Hub desde los secretos de GitHub Actions
           ports:
             - containerPort: 80
 ---
