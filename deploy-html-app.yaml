@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: guiss0/html-app
+      app: guiss0html-app
   template:
     metadata:
       labels:
-        app: guiss0/html-app
+        app: guiss0html-app
     spec:
       containers:
         - name: html-app
@@ -24,7 +24,7 @@ metadata:
   name: html-app
 spec:
   selector:
-    app: guiss0/html-app
+    app: guiss0html-app
   ports:
     - protocol: TCP
       port: 80
