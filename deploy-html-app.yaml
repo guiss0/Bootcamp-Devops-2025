@@ -17,8 +17,6 @@ spec:
           image: guiss0/html-app:latest  # Imagen de Docker Hub desde los secretos de GitHub Actions
           ports:
             - containerPort: 80
-      imagePullSecrets:
-        - name: ${{ secrets.DOCKER_REGISTRY_SECRET }}
 ---
 apiVersion: v1
 kind: Service
