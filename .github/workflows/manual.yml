@@ -27,13 +27,13 @@ jobs:
           
       - name: Setup kubectl and deploy
         run: |
-          echo "${{ secrets.GOKU }}" | base64 -d > kubeconfig
+          echo "${{ secrets.GOKU2 }}" | base64 -d > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
           kubectl version --client
           kubectl get pods -A
       - name: Deploy to Kubernetes
         run: |
-          echo "${{ secrets.GOKU }}"  | base64 -d > kubeconfig
+          echo "${{ secrets.GOKU2 }}"  | base64 -d > kubeconfig
           export KUBECONFIG=$PWD/kubeconfig
           sed -i "s/imageversion/$GITHUB_RUN_NUMBER/g" deploy-html-app.yaml 
           cat deploy-html-app.yaml
